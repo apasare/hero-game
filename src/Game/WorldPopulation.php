@@ -30,11 +30,7 @@ class WorldPopulation
     {
         foreach ($lifeFormsConfig as $id => $lifeFormConfig) {
             try {
-                $lifeForm = $this->_lifeFormFactory->spawn($lifeFormConfig);
-                if (!($lifeForm instanceof LifeForm)) {
-                    throw new \Exception('Invalid LifeForm type.');
-                }
-                $this->_population[$id] = $lifeForm;
+                $this->_population[$id] = $this->_lifeFormFactory->spawn($lifeFormConfig);
             } catch (\Exception $e) {
                 echo $e->getMessage(), "\n";
                 // for now lets just ignore bad lifeform configurations

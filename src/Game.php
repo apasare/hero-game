@@ -6,6 +6,9 @@ use SimpleCoding\Core\DependencyInjectionContainer;
 use SimpleCoding\Game\Config;
 use SimpleCoding\Game\WorldPopulation;
 
+/**
+ * @singleton
+ */
 class Game
 {
     const OPTION_CONFIG_FILE = 'config_file';

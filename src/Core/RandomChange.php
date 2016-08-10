@@ -12,6 +12,9 @@ class RandomChange
      */
     protected $_randomGenerator;
 
+    /**
+     * @param RandomGenerator $randomGenerator
+     */
     public function __construct(RandomGenerator $randomGenerator)
     {
         $this->_randomGenerator = $randomGenerator;

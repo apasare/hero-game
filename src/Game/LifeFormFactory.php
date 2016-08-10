@@ -82,6 +82,10 @@ class LifeFormFactory
             'stats' => $this->_prepareStats($lifeFormConfig['stats'])
         ]);
 
+        if (!($lifeForm instanceof LifeForm)) {
+            throw new \Exception('Invalid LifeForm type.');
+        }
+
         if (is_array($lifeFormConfig['skills'])) {
             $this->_addSkills($lifeForm, $lifeFormConfig['skills']);
         }
