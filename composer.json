@@ -1,0 +1,15 @@
+{
+    "name": "godvsdeity/hero-game",
+    "authors": [
+        {
+            "name": "Alexandru Pasare",
+            "email": "alexandru.pasare@innobyte.com"
+        }
+    ],
+    "require": {
+        "symfony/yaml": "@stable"
+    },
+    "autoload": {
+        "psr-4": {"SimpleCoding\\": "src/"}
+    }
+}

@@ -1,0 +1,95 @@
+lifeforms:
+  orderus:
+    type: SimpleCoding\Game\LifeForm\Humanoid
+    name: Orderus
+    stats:
+      health:
+        min: 70
+        max: 100
+      strength:
+        min: 70
+        max: 80
+      defence:
+        min: 45
+        max: 55
+      speed:
+        min: 40
+        max: 50
+      luck:
+        min: 10
+        max: 30
+    skills:
+      - SimpleCoding\Game\Skill\RapidStrike
+      - SimpleCoding\Game\Skill\MagicShield
+  creature_1:
+    type: SimpleCoding\Game\LifeForm\Creature
+    name: Creature 1
+    stats:
+      health:
+        min: 70
+        max: 100
+      strength:
+        min: 70
+        max: 80
+      defence:
+        min: 45
+        max: 55
+      speed:
+        min: 40
+        max: 50
+      luck:
+        min: 10
+        max: 30
+  orderus_reloaded:
+    type: SimpleCoding\Game\LifeForm\Humanoid
+    name: Orderus Reloaded
+    stats:
+      health:
+        min: 70
+        max: 100
+      strength:
+        min: 70
+        max: 80
+      defence:
+        min: 45
+        max: 55
+      speed:
+        min: 40
+        max: 50
+      luck:
+        min: 10
+        max: 30
+    skills:
+      - SimpleCoding\Game\Skill\RapidStrike
+      - SimpleCoding\Game\Skill\HolyLight
+      - SimpleCoding\Game\Skill\EyeForEye
+  creature_2:
+    type: SimpleCoding\Game\LifeForm\Creature
+    name: Creature 2
+    stats:
+      health:
+        min: 70
+        max: 100
+      strength:
+        min: 70
+        max: 80
+      defence:
+        min: 45
+        max: 55
+      speed:
+        min: 40
+        max: 50
+      luck:
+        min: 10
+        max: 30
+    skills:
+      - SimpleCoding\Game\Skill\MagicShield
+      - SimpleCoding\Game\Skill\HolyLight
+      - SimpleCoding\Game\Skill\SpellReflect
+arenas:
+  arena_1:
+    maxTurns: 50
+    battles:
+      - [orderus, creature_1]
+      - [orderus, creature_2]
+      - [orderus_reloaded, creature_2]
