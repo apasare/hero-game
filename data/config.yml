@@ -88,7 +88,7 @@ lifeforms:
       - SimpleCoding\Game\Skill\SpellReflect
 arenas:
   arena_1:
-    maxTurns: 50
+    maxTurns: 20
     battles:
       - [orderus, creature_1]
       - [orderus, creature_2]
