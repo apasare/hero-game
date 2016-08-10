@@ -3,6 +3,7 @@
 namespace SimpleCoding\Game;
 
 use SimpleCoding\Game\Skill\SkillAbstract;
+use SimpleCoding\Core\RandomChange;
 
 abstract class LifeForm
 {
@@ -38,6 +39,11 @@ abstract class LifeForm
     protected $_skills = [];
 
     /**
+     * @var RandomChange
+     */
+    protected $_randomChange;
+
+    /**
      * @var string
      */
     protected $_name;
@@ -46,8 +52,9 @@ abstract class LifeForm
      * @param int $maxHealth
      * @param array $stats
      */
-    public function __construct($name, $stats)
+    public function __construct(RandomChange $randomChange, $name, $stats)
     {
+        $this->_randomChange = $randomChange;
         $this->_name = $name;
 
         foreach ($this->_availableStats as $statKey) {
@@ -68,12 +75,26 @@ abstract class LifeForm
         } else if ($this->_stats[self::STAT_HEALTH] < 0) {
             $this->_stats[self::STAT_HEALTH] = 0;
         }
+
+        if ($this->_stats[self::STAT_LUCK] > 100) {
+            $this->_stats[self::STAT_LUCK] = 100;
+        } else if ($this->_stats[self::STAT_LUCK] < 0) {
+            $this->_stats[self::STAT_LUCK] = 0;
+        }
     }
 
     public function reset()
     {
         $this->_stats = $this->_origStats;
         $this->_fixStatsLimits();
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isLucky()
+    {
+        return $this->_randomChange->getChange() <= (int) ($this->getLuck() * 100);
     }
 
     /**

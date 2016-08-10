@@ -93,22 +93,20 @@ class Engine
 
         $this->_castSkills($attacker->getOffensiveSkills(), $battleEvent);
         $this->_castSkills($defender->getDefensiveSkills(), $battleEvent);
+        if ($defender->isLucky()) {
+            echo sprintf('%s is lucky', $defender), "\n";
+            $battleEvent->setDefenderDelta(LifeForm::STAT_HEALTH, 0);
+        }
 
-        $defenderHpDelta = $battleEvent->getDefenderDelta(LifeForm::STAT_HEALTH);
-        $this->_outputHpDeltaMessage($defender, $defenderHpDelta);
-        $attackerHpDelta = $battleEvent->getAttackerDelta(LifeForm::STAT_HEALTH);
-        $this->_outputHpDeltaMessage($attacker, $attackerHpDelta);
+        $this->_outputHpDeltaMessage(
+            $defender,
+            $battleEvent->getDefenderDelta(LifeForm::STAT_HEALTH)
+        );
+        $this->_outputHpDeltaMessage(
+            $attacker,
+            $battleEvent->getAttackerDelta(LifeForm::STAT_HEALTH)
+        );
         echo "\n";
-        // $message = sprintf(
-        //     "%s %s %.2f damage\n%s %s %.2f damage\n\n",
-        //     $defender,
-        //     $defenderHpDelta < 0 ? 'takes' : 'heals',
-        //     ($defenderHpDelta),
-        //     $attacker,
-        //     $attackerHpDelta < 0 ? 'takes' : 'heals',
-        //     ($attackerHpDelta)
-        // );
-        // echo $message;
 
         $attacker->applyDeltas($battleEvent->getAttackerDeltas());
         $defender->applyDeltas($battleEvent->getDefenderDeltas());

@@ -2,7 +2,7 @@
 
 namespace SimpleCoding\Game\Skill;
 
-use SimpleCoding\Core\RandomGenerator;
+use SimpleCoding\Core\RandomChange;
 use SimpleCoding\Game\Battle\Event;
 use SimpleCoding\Game\LifeForm;
 
@@ -22,21 +22,13 @@ abstract class SkillAbstract
     protected $_caster;
 
     /**
-     * @var RandomGenerator
+     * @var RandomChange
      */
-    protected $_randomGenerator;
+    protected $_randomChange;
 
-    public function __construct(RandomGenerator $randomGenerator)
+    public function __construct(RandomChange $randomChange)
     {
-        $this->_randomGenerator = $randomGenerator;
-    }
-
-    /**
-     * @return int
-     */
-    protected function _getRandomChange()
-    {
-        return $this->_randomGenerator->rand(1, 10000);
+        $this->_randomChange = $randomChange;
     }
 
     /**
@@ -63,7 +55,7 @@ abstract class SkillAbstract
      */
     public function canCast(Event $battleEvent)
     {
-        return $this->_getRandomChange() <= $this->getCastChance();
+        return $this->_randomChange->getChange() <= $this->getCastChance();
     }
 
     abstract public function cast(Event $battleEvent);
